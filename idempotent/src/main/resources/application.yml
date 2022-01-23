@@ -1,0 +1,29 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  port: 8081
+spring:
+  redis:
+    timeout: 5000
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/db_debug?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+  typeAliasesPackage: com.wls.debug.idempotent.moduler.entity
+  global-config:
+    db-config:
+
+      id-type: auto
+      logic-delete-field: isDelete
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
